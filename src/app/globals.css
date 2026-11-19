@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blue: #0072e9;
+  --blue-dark: #0b5fc0;
+  --ink: #000;
+  --muted: #5b6470;
+  --pale: #eaf1fb;
+  --grey-btn: #c9ccd0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--blue);
+  --color-brand-dark: var(--blue-dark);
+  --color-pale: var(--pale);
+  --font-sans: var(--font-manrope), Helvetica, Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html { scroll-behavior: smooth; }
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  border-radius: 85px; padding: 5px 15px; font-size: 14px; font-weight: 600;
+  background: var(--blue); color: #fff; transition: background .2s, transform .2s;
+}
+.btn:hover { background: var(--blue-dark); }
+.btn-lg { padding: 12px 28px; font-size: 16px; }
+.btn-white { background: #fff; color: #000; }
+.btn-white:hover { background: #e8eefb; }
+.btn-ghost { background: transparent; border: 1px solid currentColor; color: inherit; }
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+.container-x { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+.eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.h-display { font-size: clamp(32px, 4.6vw, 56px); line-height: 1.1; font-weight: 400; }
+.h-section { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.12; font-weight: 400; }
+.card-glass { border-radius: 24px; background: rgba(234,241,251,.92); }
+.fade-in { animation: fade .6s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: none; } }
+
+.input {
+  width: 100%; border: 1px solid #cfd6df; border-radius: 12px; padding: 10px 14px; background: #fff;
+}
+.input:focus { outline: 2px solid var(--blue); border-color: transparent; }
