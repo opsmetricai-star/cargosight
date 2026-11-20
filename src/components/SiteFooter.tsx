@@ -18,7 +18,7 @@ export default function SiteFooter() {
         <div>
           <Logo light />
           <p className="mt-4 max-w-xs text-sm text-white/60">Decision intelligence for the global supply chain. One connected picture, agents that act on it.</p>
-          <Link href="/get-a-demo" className="btn btn-lg mt-6">Get a demo</Link>
+          <div className="mt-6 flex gap-3"><Link href="/signup" className="btn btn-lg">Sign up</Link><Link href="/login" className="btn btn-lg btn-ghost">Sign in</Link></div>
         </div>
         {cols.map((c) => (
           <div key={c.t}>

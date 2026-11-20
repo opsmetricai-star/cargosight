@@ -29,12 +29,15 @@ export default function SiteHeader() {
                 <Link href={m.href} className={`text-[15px] font-medium ${open === m.label ? "text-brand" : ""}`}>{m.label}</Link>
               </div>
             ))}
+            <div className="h-14 flex items-center" onMouseEnter={() => setOpen(null)}>
+              <Link href="/pricing" className="text-[15px] font-medium">Pricing</Link>
+            </div>
           </nav>
           <div className="flex items-center gap-3">
             <Link href="/search" aria-label="Search" className="hidden xl:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Search size={15} /></Link>
             <button aria-label="Language" className="hidden xl:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Globe size={15} /></button>
-            <Link href="/login" className="hidden sm:block text-[15px] px-2">Login</Link>
-            <Link href="/get-a-demo" className="btn">Demo</Link>
+            <Link href="/login" className="hidden sm:block text-[15px] px-2">Sign in</Link>
+            <Link href="/signup" className="btn">Sign up</Link>
             <button className="lg:hidden" aria-label="Menu" onClick={() => setMobile(true)}><Menu /></button>
           </div>
         </div>
@@ -86,9 +89,10 @@ export default function SiteHeader() {
                 )}
               </div>
             ))}
+            <Link href="/pricing" onClick={() => setMobile(false)} className="block border-b py-4 text-lg">Pricing</Link>
             <div className="mt-6 flex gap-3">
-              <Link href="/login" onClick={() => setMobile(false)} className="btn btn-lg btn-ghost">Login</Link>
-              <Link href="/get-a-demo" onClick={() => setMobile(false)} className="btn btn-lg">Get a demo</Link>
+              <Link href="/login" onClick={() => setMobile(false)} className="btn btn-lg btn-ghost">Sign in</Link>
+              <Link href="/signup" onClick={() => setMobile(false)} className="btn btn-lg">Sign up</Link>
             </div>
           </div>
         </div>

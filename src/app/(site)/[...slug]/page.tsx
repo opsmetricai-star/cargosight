@@ -25,7 +25,7 @@ export default async function GenericPage({ params }: { params: Promise<{ slug: 
           <div className="eyebrow text-[#6cb4ff]">{p.eyebrow}</div>
           <h1 className="h-display mt-3 max-w-4xl">{p.title}</h1>
           <p className="mt-6 max-w-2xl text-[19px] text-white/80">{p.lead}</p>
-          <div className="mt-8 flex gap-3"><Link href="/get-a-demo" className="btn btn-lg">Get a demo</Link><Link href="/signup" className="btn btn-lg btn-ghost">Start free</Link></div>
+          <div className="mt-8 flex gap-3"><Link href="/signup" className="btn btn-lg">Sign up</Link><Link href="/login" className="btn btn-lg btn-ghost">Sign in</Link></div>
         </div>
       </section>
 
@@ -66,8 +66,8 @@ export default async function GenericPage({ params }: { params: Promise<{ slug: 
 
       <section className="bg-gradient-to-br from-[#0b5fc0] to-[#0072e9] py-16 text-center text-white">
         <div className="container-x">
-          <h2 className="h-section">See it on your own shipments</h2>
-          <Link href="/get-a-demo" className="btn btn-lg btn-white mt-6">Get a demo <ArrowRight size={16} /></Link>
+          <h2 className="h-section">Start tracking your own shipments</h2>
+          <Link href="/signup" className="btn btn-lg btn-white mt-6">Sign up free <ArrowRight size={16} /></Link>
         </div>
       </section>
     </>

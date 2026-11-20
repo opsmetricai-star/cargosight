@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
+// Quotes below are illustrative sample copy.
 export default function Testimonials({ items }: { items: { q: string; n: string; r: string }[] }) {
   const [i, setI] = useState(0);
   useEffect(() => { const t = setInterval(() => setI((x) => (x + 1) % items.length), 7000); return () => clearInterval(t); }, [items.length]);

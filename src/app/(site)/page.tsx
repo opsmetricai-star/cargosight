@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import HeroTabs from "@/components/home/HeroTabs";
 import Testimonials from "@/components/home/Testimonials";
+import { PAYMENT_LINKS } from "@/lib/site";
 
 const METRICS = [
   { t: "Decrease costs", v: "$16M", d: "in avoided cost during a major bridge collapse", s: "$29B automotive manufacturer rerouting shipments in real time", img: "from-slate-300 to-slate-100" },
@@ -51,8 +52,8 @@ export default function Home() {
           <h1 className="text-[44px] leading-[1.1] md:text-[72px]">Your Supply Chain at Work</h1>
           <p className="mx-auto mt-24 max-w-3xl text-[20px] font-semibold md:text-[24px]">Decision intelligence that orchestrates AI agents to detect, decide and act in real time.</p>
           <div className="mt-8 flex justify-center gap-3">
-            <Link href="/get-a-demo" className="btn btn-lg">Get a demo</Link>
-            <Link href="/signup" className="btn btn-lg btn-ghost">Start free</Link>
+            <Link href="/signup" className="btn btn-lg">Sign up</Link>
+            <Link href="/login" className="btn btn-lg btn-ghost">Sign in</Link>
           </div>
           <HeroTabs />
         </div>
@@ -158,6 +159,25 @@ export default function Home() {
           ))}
         </div>
         <Link href="/resources" className="btn btn-lg mt-8">View all resources</Link>
+      </section>
+
+      {/* 8b. Pricing */}
+      <section className="bg-[#f5f7fa] py-20">
+        <div className="container-x text-center">
+          <h2 className="h-section">Simple <span className="text-brand">pricing</span></h2>
+          <p className="mt-3 text-[18px] text-[#3a4350]">Start free. Upgrade when your network grows.</p>
+          <div className="mt-10 grid gap-6 text-left md:grid-cols-3">
+            {[["Free", "$0", "25 shipments · 3 carriers · 5 AI credits", "/signup", "Start free"], ["Starter", "$57", "500 shipments · 25 carriers · 100 AI credits", PAYMENT_LINKS.starter, "Upgrade to Starter"], ["Pro", "$97", "Unlimited shipments & carriers · 500 AI credits", PAYMENT_LINKS.pro, "Upgrade to Pro"]].map(([n, p, d, h, c], i) => (
+              <div key={n} className={`flex flex-col rounded-3xl p-8 ${i === 2 ? "bg-brand text-white" : "bg-white"}`}>
+                <div className="text-[20px] font-semibold">{n}</div>
+                <div className="mt-3 text-[48px] font-light leading-none">{p}<span className="text-base opacity-70">{i ? " /mo" : ""}</span></div>
+                <p className="mt-3 flex-1 text-[15px] opacity-80">{d}</p>
+                {i ? <a href={h} target="_blank" rel="noopener noreferrer" className={`btn btn-lg mt-6 ${i === 2 ? "btn-white" : ""}`}>{c}</a> : <Link href={h} className="btn btn-lg mt-6">{c}</Link>}
+              </div>
+            ))}
+          </div>
+          <Link href="/pricing" className="mt-8 inline-block font-semibold text-brand">Compare all plans →</Link>
+        </div>
       </section>
 
       {/* 9. CTA */}
