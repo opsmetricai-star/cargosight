@@ -58,13 +58,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 1b. Logo strip */}
+      <section className="border-b border-black/5 bg-white py-8">
+        <div className="container-x flex flex-wrap items-center justify-center gap-x-12 gap-y-4 text-[22px] font-bold tracking-tight text-[#6b7480] opacity-80">
+          {["NORDAXLE", "Halcyon Foods", "TRANSVECTA", "Brightmill", "Kestrel Auto", "Orbis Retail", "SOLENNE", "Vantage Steel"].map((n) => (<span key={n}>{n}</span>))}
+        </div>
+      </section>
+
       {/* 2. Proven results */}
       <section className="container-x py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div><h2 className="h-section">Proven results. Better outcomes.</h2>
-            <p className="mt-3 max-w-xl text-[18px] text-[#3a4350]">The world's most complex supply chains run on cargosight. Here is what that looks like in practice.</p></div>
-          <Link href="/customer-hub" className="btn btn-lg">See more</Link>
-        </div>
+        <h2 className="h-section">Proven results. <span className="text-brand">Better outcomes.</span></h2>
+        <p className="mt-3 max-w-xl text-[18px] text-[#3a4350]">The world's most complex supply chains run on cargosight. Here is what that looks like in practice.</p>
+        <Link href="/customer-hub" className="btn mt-4">See more</Link>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {METRICS.slice(0, 3).map((m) => <MetricCard key={m.v} m={m} />)}
         </div>
@@ -74,48 +79,51 @@ export default function Home() {
       </section>
 
       {/* 3. Customer stories */}
-      <section className="bg-[#f5f7fa] py-20">
-        <div className="container-x">
-          <div className="eyebrow text-brand">Customer stories</div>
-          <h2 className="h-section mt-2">Impact across industries</h2>
-          <p className="mt-3 text-[18px] text-[#3a4350]">Hear directly from the people behind the world's best supply chains.</p>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {STORIES.map((s) => (
-              <Link key={s.tag} href="/customer-hub" className={`group flex min-h-[360px] flex-col justify-between rounded-3xl bg-gradient-to-br ${s.g} p-7 text-white transition hover:-translate-y-1`}>
-                <span className="eyebrow">{s.tag}</span>
-                <div><p className="text-[20px] leading-snug">{s.t}</p>
-                  <div className="mt-5 flex gap-3 text-sm font-semibold"><span className="rounded-full bg-white px-4 py-1.5 text-black">Learn more</span><span className="rounded-full border border-white/50 px-4 py-1.5">Watch the video</span></div></div>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-8 text-center"><Link href="/customer-hub" className="btn btn-lg">See all customer testimonials</Link></div>
+      <section className="container-x pb-20">
+        <h2 className="h-section">Impact across <span className="text-brand">Industries</span></h2>
+        <p className="mt-3 text-[18px] text-[#3a4350]">Hear directly from the people behind the world's best supply chains.</p>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {STORIES.map((s) => (
+            <Link key={s.tag} href="/customer-hub" className="group flex min-h-[420px] flex-col rounded-3xl border border-black/10 bg-white p-6 shadow-sm transition hover:shadow-xl">
+              <div className={`grid h-44 place-items-center rounded-2xl bg-gradient-to-br ${s.g}`}>
+                <span className="grid h-14 w-20 place-items-center rounded-xl bg-brand text-white shadow-lg transition group-hover:scale-110"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z" /></svg></span>
+              </div>
+              <span className="eyebrow mt-6 text-[#5b6470]">{s.tag}</span>
+              <p className="mt-3 flex-1 text-[17px] leading-snug">{s.t}</p>
+              <div className="mt-5 flex gap-3 text-sm font-semibold"><span className="btn">Learn more</span><span className="btn btn-ghost !text-black">Watch the video</span></div>
+            </Link>
+          ))}
         </div>
+        <div className="mt-8 text-center"><Link href="/customer-hub" className="btn btn-lg">See all customer testimonials</Link></div>
       </section>
 
       {/* 4. Platform families */}
-      <section className="container-x py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div><h2 className="h-section">The Decision Intelligence Platform</h2>
-            <p className="mt-3 max-w-2xl text-[18px] text-[#3a4350]">Purpose-built product families that improve your supply chain end to end through collaboration and exception management.</p></div>
-          <Link href="/platform" className="btn btn-lg">Go to product families</Link>
+      <section className="container-x pb-20">
+        <h2 className="h-section text-brand">The Decision Intelligence Platform</h2>
+        <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
+          <p className="max-w-xl text-[18px] text-[#3a4350]">Purpose-built product families designed to improve your supply chain operations end to end through collaboration and exception management.</p>
+          <Link href="/platform" className="btn">Go to product families</Link>
         </div>
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-6 rounded-[32px] bg-[#0b5fc0] p-6 text-white md:grid-cols-2 md:p-10 lg:grid-cols-4">
           {FAMILIES.map(([n, t, d, h]) => (
-            <Link key={n} href={h} className="group flex min-h-[320px] flex-col justify-between rounded-3xl bg-pale p-7 transition hover:bg-brand hover:text-white">
-              <span className="text-[44px] font-light text-brand group-hover:text-white">{n}</span>
-              <div><h3 className="text-[22px] font-semibold leading-tight">{t}</h3><p className="mt-3 text-[15px] opacity-80">{d}</p><ArrowRight className="mt-4" /></div>
+            <Link key={n} href={h} className="group flex min-h-[340px] flex-col justify-between rounded-3xl bg-white/10 p-7 transition hover:bg-white hover:text-[#0b5fc0]">
+              <span className="text-[44px] font-light">{n}</span>
+              <div><h3 className="text-[22px] font-semibold leading-tight">{t}</h3><p className="mt-3 text-[15px] opacity-85">{d}</p><ArrowRight className="mt-4" /></div>
             </Link>
           ))}
         </div>
       </section>
 
       {/* 5. Data context */}
-      <section className="bg-[#050a12] py-20 text-white">
-        <div className="container-x">
-          <h2 className="h-section max-w-2xl">Fueling AI with industry-leading context</h2>
-          <p className="mt-4 max-w-2xl text-[18px] text-white/70">Our agents don't operate on guesswork. They run on a large, accurate, real-time logistics data graph. That context is what makes the intelligence real.</p>
-          <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {STATS.map(([v, l]) => (<div key={v} className="border-t border-white/20 pt-5"><div className="text-[48px] font-light leading-none text-[#4da3ff]">{v}</div><div className="mt-2 text-white/75">{l}</div></div>))}
+      <section className="relative overflow-hidden bg-black py-24 text-white">
+        <div className="absolute -left-40 top-1/3 h-96 w-[70%] rotate-[-8deg] blur-3xl" style={{ background: "radial-gradient(ellipse, #0a6bff 0, transparent 70%)", opacity: 0.55 }} />
+        <div className="container-x relative">
+          <h2 className="h-section max-w-xl">Fueling AI with <span className="text-brand">industry leading</span> context</h2>
+          <p className="mt-4 max-w-xl text-[17px] text-white/75">Our agents don't operate on guesswork. They run on a large, accurate, real-time logistics data graph. That context is what makes the intelligence real.</p>
+          <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {STATS.map(([v, l]) => { const m = v.match(/^([\d.]+)(.*)$/)!; return (
+              <div key={v} className="rounded-2xl border border-white/20 bg-black/40 p-5 backdrop-blur"><div className="text-[44px] leading-none">{m[1]}<span className="text-brand">{m[2]}</span></div><div className="mt-3 text-white/80">{l}</div></div>
+            ); })}
           </div>
         </div>
       </section>
@@ -124,35 +132,32 @@ export default function Home() {
       <Testimonials items={QUOTES} />
 
       {/* 7. Industry leaders */}
-      <section className="bg-pale py-20">
+      <section className="bg-black py-20 text-white">
         <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div><h2 className="h-section">Our customers are industry leaders</h2>
-              <p className="mt-3 text-[18px] text-[#3a4350]">Global brands rely on cargosight for actionable insight that cuts delay and lifts supply chain efficiency.</p></div>
-            <Link href="/customer-hub" className="btn btn-lg">Learn more</Link>
-          </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TILES.map(([a, b]) => (<div key={b} className="rounded-3xl bg-white p-8"><div className="text-[44px] font-light text-brand">{a}</div><div className="mt-1 text-[17px]">{b}</div></div>))}
+          <h2 className="h-section">Our customers are <span className="text-brand">industry leaders</span></h2>
+          <p className="mt-3 max-w-xl text-[18px] text-white/75">Global brands rely on cargosight for actionable insight that cuts delay and lifts supply chain efficiency.</p>
+          <Link href="/customer-hub" className="btn mt-4">Learn more</Link>
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {TILES.map(([a, b], i) => (<div key={b} className="min-h-[170px] rounded-3xl p-8" style={{ background: `linear-gradient(135deg, ${["#10233d", "#1b1b22", "#2a1d12", "#101f2e", "#22150d", "#0f1c2a"][i]}, #050505)` }}><div className="text-[34px]">{a}</div><div className="mt-2 text-[16px] text-white/80">{b}</div></div>))}
           </div>
         </div>
       </section>
 
       {/* 8. Resources */}
-      <section className="container-x py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div><h2 className="h-section">Resources and insights</h2><p className="mt-3 text-[18px] text-[#3a4350]">The latest supply chain thinking to power your transformation.</p></div>
-          <Link href="/resources" className="btn btn-lg">View all resources</Link>
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {RES.map(([t, d, dt]) => (
-            <Link key={t} href="/blog" className="group rounded-3xl border border-black/10 p-7 transition hover:shadow-xl">
-              <div className="text-sm text-[#5b6470]">{dt}</div>
-              <h3 className="mt-3 text-[22px] font-semibold leading-snug">{t}</h3>
-              <p className="mt-3 text-[15px] text-[#3a4350]">{d}</p>
-              <span className="mt-5 inline-flex items-center gap-1 font-semibold text-brand">Learn more <ArrowRight size={16} /></span>
+      <section className="container-x py-20 text-center">
+        <h2 className="h-section">Resources and insights</h2>
+        <p className="mt-3 text-[18px] text-[#3a4350]">Get the latest and greatest supply chain insights to power your supply chain transformation.</p>
+        <div className="mt-10 grid gap-6 text-left md:grid-cols-3">
+          {RES.map(([t, d, dt], i) => (
+            <Link key={t} href="/blog" className="group overflow-hidden rounded-3xl border border-black/10 transition hover:shadow-xl">
+              <div className="relative h-44" style={{ background: ["linear-gradient(135deg,#c99a5b,#7a4b2a)", "linear-gradient(135deg,#0a4ea8,#0b2a5c)", "linear-gradient(135deg,#1c2735,#0b6bff)"][i] }}>
+                <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-black"><ArrowRight size={16} className="-rotate-45" /></span>
+              </div>
+              <div className="p-6"><div className="text-sm text-[#5b6470]">{dt}</div><h3 className="mt-2 text-[20px] font-semibold leading-snug">{t}</h3><p className="mt-3 text-[15px] text-[#3a4350]">{d}</p></div>
             </Link>
           ))}
         </div>
+        <Link href="/resources" className="btn btn-lg mt-8">View all resources</Link>
       </section>
 
       {/* 9. CTA */}

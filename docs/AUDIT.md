@@ -31,3 +31,7 @@
 
 ## Not inspected yet
 Individual subpages' bodies (to be audited per page while building), logged-in Movement app (auth-gated – not bypassed).
+
+## Visual comparison log (2026-11-20, homepage)
+Fixed: added logo strip; two-tone headings; light story cards with video thumbnails; platform families inside large blue panel; black "Fueling AI" section with glow and bordered tiles (suffix in blue); black two-column industry tiles; centred resources section with image cards and arrow badges; hero Route Details panel with blue chips on dotted map.
+Known remaining gaps: photographic/video imagery (hero video, card photos, customer logos) replaced by CSS gradients and fictional wordmarks; PP Mori font is licensed (Manrope used); testimonial carousel is text-only; subpages use one shared template; tablet layouts not individually reviewed.
