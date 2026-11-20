@@ -36,9 +36,10 @@ export async function POST(req: Request) {
     computed: { delay_days: delayDays, estimated_delay_cost_usd: exposure },
   };
 
-  const model = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+  const model = process.env.GEMINI_MODEL || "gemini-3.1-flash-lite";
   const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: "POST",
+    signal: AbortSignal.timeout(30000),
     headers: { "Content-Type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: "You are a logistics exception analyst. Use only the facts provided. Do not invent numbers; quote the computed values as given. Reply in the requested JSON." }] },
@@ -59,8 +60,8 @@ export async function POST(req: Request) {
         },
       },
     }),
-  });
-  if (!r.ok) return NextResponse.json({ error: "AI provider error. Please retry." }, { status: 502 });
+  }).catch(() => null);
+  if (!r || !r.ok) return NextResponse.json({ error: "AI provider error. Please retry." }, { status: 502 });
   let analysis;
   try {
     const j = await r.json();
