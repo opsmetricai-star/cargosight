@@ -36,7 +36,7 @@ export default function SiteHeader() {
           <div className="flex items-center gap-3">
             <Link href="/search" aria-label="Search" className="hidden xl:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Search size={15} /></Link>
             <button aria-label="Language" className="hidden xl:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Globe size={15} /></button>
-            <Link href="/login" className="hidden sm:block text-[15px] px-2">Sign in</Link>
+            <Link href="/login" className="hidden sm:block whitespace-nowrap text-[15px] px-2">Sign in</Link>
             <Link href="/signup" className="btn">Sign up</Link>
             <button className="lg:hidden" aria-label="Menu" onClick={() => setMobile(true)}><Menu /></button>
           </div>
