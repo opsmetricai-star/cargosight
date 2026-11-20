@@ -23,7 +23,7 @@ export default function SiteHeader() {
       <header className="bg-white shadow-[0_1px_0_rgba(0,0,0,.06)]" onMouseLeave={() => setOpen(null)}>
         <div className="mx-auto flex h-14 max-w-[1362px] items-center justify-between px-6">
           <Logo />
-          <nav className="hidden lg:flex items-center gap-9">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-9 whitespace-nowrap lg:mx-4">
             {NAV.map((m) => (
               <div key={m.label} onMouseEnter={() => setOpen(m.label)} className="h-14 flex items-center">
                 <Link href={m.href} className={`text-[15px] font-medium ${open === m.label ? "text-brand" : ""}`}>{m.label}</Link>
@@ -31,8 +31,8 @@ export default function SiteHeader() {
             ))}
           </nav>
           <div className="flex items-center gap-3">
-            <Link href="/search" aria-label="Search" className="hidden sm:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Search size={15} /></Link>
-            <button aria-label="Language" className="hidden sm:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Globe size={15} /></button>
+            <Link href="/search" aria-label="Search" className="hidden xl:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Search size={15} /></Link>
+            <button aria-label="Language" className="hidden xl:grid h-7 w-10 place-items-center rounded-full bg-[#c9ccd0]"><Globe size={15} /></button>
             <Link href="/login" className="hidden sm:block text-[15px] px-2">Login</Link>
             <Link href="/get-a-demo" className="btn">Demo</Link>
             <button className="lg:hidden" aria-label="Menu" onClick={() => setMobile(true)}><Menu /></button>
